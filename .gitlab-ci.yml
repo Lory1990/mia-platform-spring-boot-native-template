@@ -1,0 +1,28 @@
+include:
+  - project: "clients/beConsulting/step/cd-ci-templates"
+    file: "java/spring-boot.yml"
+    ref: "main"
+
+default:
+  image: maven:3.8.3-openjdk-17
+
+build-jar:
+  image: docker:24.0.7
+  before_script:
+    - apk add --update openjdk21
+    - apk add --update maven
+  services:
+    - name: docker:24.0.7-dind
+      alias: docker
+  script:
+    - mvn $MAVEN_CLI_OPTS -Pnative -DskipTests -Dimage.name=$FULL_IMAGE_NAME spring-boot:build-image
+    - docker login -u ${NEXUS_USER} -p ${NEXUS_TOKEN} ${NEXUS_URL}
+    - docker push $FULL_IMAGE_NAME
+  variables:
+    QUEUE_SPECIFIC_TOPIC: promocode
+    FULL_IMAGE_NAME: $NEXUS_URL/$IMAGE_NAME:$CI_TAG
+  only:
+    - tags
+
+variables:
+  IMAGE_NAME: miaplatform/spring-boot-starter
