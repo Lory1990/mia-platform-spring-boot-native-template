@@ -4,9 +4,9 @@
     "type": "template",
     "releaseStage": "stable",
     "tenantId": "step",
-    "itemId": "quarkus-template",
+    "itemId": "spring-boot-native-template",
     "repositoryUrl": "https://github.com/Lory1990/mia-platform-spring-boot-native/",
-    "label": "Quarkus template",
+    "label": "pring Boot Native",
     "categoryId": "kotlin",
     "suportedBy": "Lorenzo De Francesco",
     "documentation": {
@@ -22,7 +22,7 @@
     "resources":{
         "services":{
             "spring-boot-service":{
-                "description": "Simple quarkus service",
+                "description": "Simple Spring Boot Native service",
                 "archiveUrl": "https://github.com/Lory1990/mia-platform-spring-boot-native/archive/main.tar.gz",
                 "containerPorts": [
                     {
