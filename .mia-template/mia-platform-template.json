@@ -6,7 +6,7 @@
     "tenantId": "step",
     "itemId": "spring-boot-native-template",
     "repositoryUrl": "https://github.com/Lory1990/mia-platform-spring-boot-native/",
-    "label": "pring Boot Native",
+    "label": "Spring Boot Native",
     "categoryId": "kotlin",
     "suportedBy": "Lorenzo De Francesco",
     "documentation": {
