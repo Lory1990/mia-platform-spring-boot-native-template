@@ -22,7 +22,7 @@
     "resources":{
         "services":{
             "spring-boot-service":{
-                "name": "Spring Boot Native",
+                "name": "spring-boot-service",
                 "description": "Simple Spring Boot Native service",
                 "archiveUrl": "https://github.com/Lory1990/mia-platform-spring-boot-native/archive/main.tar.gz",
                 "containerPorts": [
