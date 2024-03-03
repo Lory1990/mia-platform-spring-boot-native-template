@@ -1,7 +1,7 @@
 include:
-  - project: "clients/beConsulting/step/cd-ci-templates"
-    file: "java/spring-boot.yml"
-    ref: "main"
+  - project: "platform/pipelines-templates"
+    file: "/common/docker-build-images.yml"
+    ref: "master"
 
 default:
   image: maven:3.8.3-openjdk-17
@@ -19,7 +19,6 @@ build-jar:
     - docker login -u ${NEXUS_USER} -p ${NEXUS_TOKEN} ${NEXUS_URL}
     - docker push $FULL_IMAGE_NAME
   variables:
-    QUEUE_SPECIFIC_TOPIC: promocode
     FULL_IMAGE_NAME: $NEXUS_URL/$IMAGE_NAME:$CI_TAG
   only:
     - tags
