@@ -6,7 +6,9 @@ include:
 default:
   image: maven:3.8.3-openjdk-17
 
-build-jar:
+
+build-tags:
+  stage: build
   image: docker:24.0.7
   before_script:
     - apk add --update openjdk21
@@ -20,8 +22,22 @@ build-jar:
     - docker push $FULL_IMAGE_NAME
   variables:
     FULL_IMAGE_NAME: $NEXUS_URL/$IMAGE_NAME:$CI_TAG
-  only:
-    - tags
+
+build-latest:
+  stage: build
+  image: docker:24.0.7
+  before_script:
+    - apk add --update openjdk21
+    - apk add --update maven
+  services:
+    - name: docker:24.0.7-dind
+      alias: docker
+  script:
+    - mvn $MAVEN_CLI_OPTS -Pnative -DskipTests -Dimage.name=$FULL_IMAGE_NAME spring-boot:build-image
+    - docker login -u ${NEXUS_USER} -p ${NEXUS_TOKEN} ${NEXUS_URL}
+    - docker push $FULL_IMAGE_NAME
+  variables:
+    FULL_IMAGE_NAME: $NEXUS_URL/$IMAGE_NAME:latest
 
 variables:
-  IMAGE_NAME: miaplatform/spring-boot-starter
+  IMAGE_NAME: mia_template_image_name_placeholder
