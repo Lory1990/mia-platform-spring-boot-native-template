@@ -2,16 +2,12 @@
     "name": "Spring Boot Native",
     "description": "Starter for Spring Boot Native Application",
     "type": "template",
-    "releaseStage": "stable",
     "tenantId": "step",
     "itemId": "spring-boot-native-template",
     "repositoryUrl": "https://github.com/Lory1990/mia-platform-spring-boot-native/",
     "label": "Spring Boot Native",
     "categoryId": "kotlin",
     "suportedBy": "Lorenzo De Francesco",
-    "visibility":{
-        "allTenants": true
-    },
     "documentation": {
         "type": "markdown",
         "url": "https://raw.githubusercontent.com/Lory1990/mia-platform-spring-boot-native/main/README.md"
